@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WebStorage - SessionStorage</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="CssStorage.css">
+    </head>
+    <body>
+        <div id="DivSessionStorage">
+            <label>Seu Nome: <input type="text" id="nomePessoa"></label><br>
+            <label>Seu endereço: <input type="text" id="enderecoPessoa"></label><br>
+            <label>Seu email: <input type="text" id="emailPessoa"></label><br>
+            <label>Seu sexo: <input type="text" id="sexoPessoa"></label><br>
+            <input type="button" value="Gravar" id="gravarNomeSession" onClick="gravarDadosSession()"/><br>
+            <input type="button" value="Ler Session" id="lerNomeSession" onClick="lerDadosSession()"/><br>
+            <input type="button" value="Remover uma Session" id="removerNomeSession" onClick="removerDadosSession()"/><br>
+            <input type="button" value="Remover tudo" id="removerTudo" onClick="removerTudo()"/>
+    </body>
+    <script>
+        function gravarDadosSession() {
+            sessionStorage.sexoPessoa = sexoPessoa.value;
+            sessionStorage.emailPessoa = emailPessoa.value;
+            sessionStorage.nomePessoa = nomePessoa.value;
+            sessionStorage.enderecoPessoa = enderecoPessoa.value;
+        }
+        function lerDadosSession() {
+            alert('Nome.:' + sessionStorage.getItem('nomePessoa') + ' - Endereço: ' + sessionStorage.getItem('enderecoPessoa')
+                    + ' - Sexo.:' + sessionStorage.getItem('sexoPessoa') + ' - Email.:' + sessionStorage.getItem('emailPessoa'));
+        }
+        function lerDadosSessionKeyFor() {
+            var dados="";
+            for(var i=0; i<sessionStorage.length;i++){
+                dados += sessionStorage.key(i)+'.:'+sessionStorage.getItem(sessionStorage.key(i))+"\n";
+            }
+        }
+        function removerDadosSession() {
+            sessionStorage.removeItem('nomePessoa') + sessionStorage.removeItem('enderecoPessoa')
+                    + sessionStorage.removeItem('sexoPessoa') + sessionStorage.removeItem('emailPessoa');
+        }
+        function removerTudo() {
+            sessionStorage.clear();
+        }
+    </script>
+</html>
